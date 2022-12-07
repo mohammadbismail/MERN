@@ -11,3 +11,4 @@ class Prop extends Component{
 }
 
 export default Prop;
+
