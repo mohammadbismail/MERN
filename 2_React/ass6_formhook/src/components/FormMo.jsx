@@ -6,7 +6,7 @@ const FormMo = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confPassword, setConfPassword] = useState("");
-  const addUser = (e) => {};
+  const addUser = (e) => { };
   return (
     <div>
       <form action="" onSubmit={addUser}>
