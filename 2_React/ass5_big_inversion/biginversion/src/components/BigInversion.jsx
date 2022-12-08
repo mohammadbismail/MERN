@@ -1,6 +1,7 @@
-import React from 'react'
+import React,{useState} from 'react' 
 
 const BigInversion = (props) => {
+    const arr = useState(5);
   return (
     <div>
         <h1>{props.fname}{props.lname}</h1>
