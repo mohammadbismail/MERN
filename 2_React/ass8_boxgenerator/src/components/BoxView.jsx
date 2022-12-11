@@ -1,11 +1,13 @@
 import React from 'react'
 
-export const BoxView = (props) => {
-    const boxColor ={
-        backgroundColor : props.color,
+export const BoxView = ({color}) => {
+    const boxStyle = {
+        background : color,
+        padding: "5rem",
+        borderRadius: "5px",
     };
     return (
-        <div className="boxColor" style={boxColor}>
+        <div style={boxStyle}>
         </div>
     )
 }
