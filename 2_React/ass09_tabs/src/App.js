@@ -14,6 +14,10 @@ function App() {
     {
       title:"Tab3",
       desc: "this is tab3",
+    },
+    {
+      title:"Tab4",
+      desc: "this is another Tab",
     }
   ]);
   return (
