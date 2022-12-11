@@ -7,7 +7,6 @@ function App() {
     margin: "5px",
     display: "flex",
     flexWrap: "wrap",
-    justifyContent:"space-evenly",
     minHeight: "auto",
     outline: "2px black solid",
     borderRadius: "5px",
