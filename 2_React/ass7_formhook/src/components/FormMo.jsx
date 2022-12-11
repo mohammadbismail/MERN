@@ -24,6 +24,7 @@ const FormMo = (props) => {
     console.log("Welcome" + newUser);
     setHasBeenSubmitted(true);
   };
+
   const fnameValidation = (e) => {
     setFirstname(e.target.value);
     if (e.target.value.length < 3) {
