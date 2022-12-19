@@ -2,13 +2,13 @@ const Product = require("../models/products.model");
 
 module.exports.findAllProducts = (req, res) => {
   Product.find()
-    .then((allProducts) => res.json({ Products: allProducts }))
+    .then((allProducts) => res.json({ products: allProducts }))
     .catch((err) => res.json({ message: "Something went wrong", error: err }));
 };
 
 module.exports.findSingleProduct = (req, res) => {
   Product.findOne({ _id: req.params.id })
-    .then((oneProduct) => res.json({ Product: oneProduct }))
+    .then((oneProduct) => res.json({ product: oneProduct }))
     .catch((err) => res.json({ message: "Something went wrong", error: err }));
 };
 
@@ -19,7 +19,7 @@ module.exports.createProduct = (req, res) => {
     price: price,
     description: description,
   })
-    .then((newProduct) => res.json({ Product: newProduct }))
+    .then((newProduct) => res.json({ product: newProduct }))
     .catch((err) => res.json({ message: "Something went wrong", error: err }));
 };
 
@@ -28,7 +28,7 @@ module.exports.updateProduct = (req, res) => {
     new: true,
     runValidators: true,
   })
-    .then((updatedProduct) => res.json({ Product: updatedProduct }))
+    .then((updatedProduct) => res.json({ product: updatedProduct }))
     .catch((err) => res.json({ message: "Something went wrong", error: err }));
 };
 
