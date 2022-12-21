@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import Form from '../components/Form'
-import Details from './Details'
+import AllProducts from './AllProducts'
 
 const Main = () => {
     const [products, setProducts] = useState([])
@@ -20,8 +20,8 @@ const Main = () => {
 
     return (
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", margin: "5rem", flexDirection: "column" }}>
-            <Form />
-            {loaded && <Details products={products} />}
+            <Form initTitle="" initPrice="" initDescription="" />
+            {loaded && <AllProducts products={products} />}
         </div>
     )
 }

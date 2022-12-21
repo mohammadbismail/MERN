@@ -1,9 +1,10 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom'
 
 const SingleProduct = () => {
+    const navigate = useNavigate()
     const { id } = useParams()
     const [product, setProduct] = useState({})
     useEffect(() => {
@@ -19,6 +20,7 @@ const SingleProduct = () => {
             <h1>{product.title}</h1>
             <h3>{product.price}</h3>
             <h3>{product.description}</h3>
+            <button onClick={() => navigate(`/product/${id}/edit`)}>Edit</button>
         </div>
     )
 }
