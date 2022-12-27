@@ -16,7 +16,6 @@ const Main = () => {
             .then((res) => setProducts(res.data))
             .then(() => setLoaded(true))
     }, [])
-    // const navigate = useNavigate()
     const createProduct = (product) => {
         axios.post(`http://localhost:8000/api/product`, {
             title: product.title,
@@ -26,9 +25,6 @@ const Main = () => {
         })
             .then(() => setProducts([...products, product]))
             .catch(err => {
-                // console.log(err.response.data.err)
-                // const errorValidator = err.response.data.err.message
-                // setErrors(errorValidator);
                 const errorResponse = err.response.data.errors; // Get the errors from err.response.data
                 const errorArr = []; // Define a temp error array to push the messages in
                 for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
@@ -42,11 +38,6 @@ const Main = () => {
         axios.delete(`http://localhost:8000/api/product/${deleteId}`)
             .then(() => setProducts(products.filter((prod) => deleteId !== prod._id)))
     }
-
-    // console.log(notDone)
-    // console.log(doing)
-    // console.log(done)
-
     return (
         <div>
             <Routes>
@@ -54,7 +45,7 @@ const Main = () => {
                     element={<Dashboard products={products} setProducts={setProducts} loaded={loaded} onSubmitProp={createProduct} onClickProp={deleteProduct} errors={errors} />}></Route>
                 <Route path={`/:id`} element={<Details />}></Route>
                 <Route path={`/:id/edit`} element={<Update />}></Route>
-                {loaded && <Route path={`/view`} element={<ListsView products={products} setProducts={setProducts} />}></Route>}
+                {loaded && <Route path={`/view`} element={<ListsView />}></Route>}
             </Routes>
         </div>
     )
