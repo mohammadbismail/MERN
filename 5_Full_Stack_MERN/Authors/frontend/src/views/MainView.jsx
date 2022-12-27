@@ -8,8 +8,8 @@ import axios from "axios";
 
 const MainView = () => {
     const [authors, setAuthors] = useState([]);
-    const handleDelete = (authIdFrmTable) => {
 
+    const handleDelete = (authIdFrmTable) => {
         axios.delete(`http://localhost:8000/api/authors/${authIdFrmTable}`)
             .then(setAuthors(authors.filter((auth) => auth._id !== authIdFrmTable)))
             .catch(err => console.error(err))

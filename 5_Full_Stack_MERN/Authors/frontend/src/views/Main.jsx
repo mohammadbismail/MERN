@@ -16,7 +16,7 @@ const Main = (props) => {
                 setAuthors(res.data)
                 setLoaded(true)
             })
-    }, [setAuthors])
+    })
 
     return (
         <div>

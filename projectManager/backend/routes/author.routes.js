@@ -5,4 +5,7 @@ module.exports = function (app) {
   app.get("/api/product/:id", AuthorController.getOne);
   app.put("/api/product/:id", AuthorController.updateOne);
   app.delete("/api/product/:id", AuthorController.deleteOne);
+  app.get("/api/notdone/", AuthorController.getNotDone);
+  app.get("/api/doing/", AuthorController.getDoing);
+  app.get("/api/done/", AuthorController.getDone);
 };

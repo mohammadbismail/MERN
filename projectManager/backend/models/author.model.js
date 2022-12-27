@@ -9,11 +9,14 @@ const AuthorSchema = new mongoose.Schema(
     },
     price: {
       type: Number,
-      required: [true, "Optional"],
+      required: [true, "Price can't be blank"],
     },
     description: {
       type: String,
       required: [true, "Description must be added"],
+    },
+    status: {
+      type: String,
     },
   },
   { timestamps: true }

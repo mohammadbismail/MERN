@@ -6,19 +6,24 @@ import Dashboard from './Dashboard'
 import Details from './Details'
 import Update from './Update'
 import axios from 'axios'
+import ListsView from './ListsView'
 const Main = () => {
     const [products, setProducts] = useState([])
     const [loaded, setLoaded] = useState(false)
     const [errors, setErrors] = useState([])
     useEffect(() => {
         axios.get(`http://localhost:8000/api/product`)
-            .then((res) => { setProducts(res.data); })
+            .then((res) => setProducts(res.data))
             .then(() => setLoaded(true))
-
     }, [])
-
+    // const navigate = useNavigate()
     const createProduct = (product) => {
-        axios.post(`http://localhost:8000/api/product`, product)
+        axios.post(`http://localhost:8000/api/product`, {
+            title: product.title,
+            price: product.price,
+            description: product.description,
+            status: "notdone"
+        })
             .then(() => setProducts([...products, product]))
             .catch(err => {
                 // console.log(err.response.data.err)
@@ -37,13 +42,19 @@ const Main = () => {
         axios.delete(`http://localhost:8000/api/product/${deleteId}`)
             .then(() => setProducts(products.filter((prod) => deleteId !== prod._id)))
     }
+
+    // console.log(notDone)
+    // console.log(doing)
+    // console.log(done)
+
     return (
         <div>
             <Routes>
                 <Route path={`/`}
-                    element={<Dashboard products={products} loaded={loaded} onSubmitProp={createProduct} onClickProp={deleteProduct} errors={errors} />}></Route>
+                    element={<Dashboard products={products} setProducts={setProducts} loaded={loaded} onSubmitProp={createProduct} onClickProp={deleteProduct} errors={errors} />}></Route>
                 <Route path={`/:id`} element={<Details />}></Route>
                 <Route path={`/:id/edit`} element={<Update />}></Route>
+                {loaded && <Route path={`/view`} element={<ListsView products={products} setProducts={setProducts} />}></Route>}
             </Routes>
         </div>
     )

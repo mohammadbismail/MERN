@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams, Link } from 'react-router-dom'
 import FormComp from '../components/FormComp'
 
-const Edit = (props) => {
+const Edit = () => {
     const { id } = useParams()
     const [nameToUpdate, setNameToUpdate] = useState('')
     const [loaded, setLoaded] = useState(false)
@@ -15,10 +15,9 @@ const Edit = (props) => {
             .then((res) => {
                 setNameToUpdate(res.data.name)
                 setLoaded(true)
-                // console.log(nameToUpdate)
             })
             .catch(err => console.error(err))
-    }, [id])
+    })
 
     const updateAuthor = (author) => {
         axios.put(`http://localhost:8000/api/authors/${id}`, author)

@@ -1,11 +1,12 @@
 const { Author } = require("../models/author.model");
 
 module.exports.createOne = (request, response) => {
-  const { title, price, description } = request.body;
+  const { title, price, description, status } = request.body;
   Author.create({
     title,
     price,
     description,
+    status,
   })
     .then((author) => response.json(author))
     .catch((err) => response.status(400).json(err));
@@ -35,5 +36,21 @@ module.exports.updateOne = (request, response) => {
 module.exports.deleteOne = (request, response) => {
   Author.deleteOne({ _id: request.params.id })
     .then((deleteConfirmation) => response.json(deleteConfirmation))
+    .catch((err) => response.json(err));
+};
+
+module.exports.getNotDone = (request, response) => {
+  Author.find({ status: "notdone" })
+    .then((authors) => response.json(authors))
+    .catch((err) => response.json(err));
+};
+module.exports.getDoing = (request, response) => {
+  Author.find({ status: "doing" })
+    .then((authors) => response.json(authors))
+    .catch((err) => response.json(err));
+};
+module.exports.getDone = (request, response) => {
+  Author.find({ status: "done" })
+    .then((authors) => response.json(authors))
     .catch((err) => response.json(err));
 };
